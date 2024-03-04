@@ -5,7 +5,6 @@
   <document-format-change-manifest>
     <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
     <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
-    <AutoCreateAndUpdateDSDPhoneLayouts />
     <IntuitiveSorting />
     <IntuitiveSorting_SP2 />
     <_.fcp.MarkAnimation.true...MarkAnimation />
@@ -852,6 +851,9 @@
       <column caption='Primary Color' datatype='string' name='[Calculation_5755037433073410048]' role='dimension' type='nominal'>
         <calculation class='tableau' formula='IF ISNULL([colors.primary]) THEN &apos;Unknown Color&apos; ELSE [colors.primary] END' />
       </column>
+      <column caption='Dogs &amp; Cats' datatype='string' name='[Calculation_6893603714571317248]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [species] = &apos;Dog&apos; OR [species] = &apos;Cat&apos; THEN &apos;Dog &amp; Cat&apos; ELSE &apos;Other&apos; END' />
+      </column>
       <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
       </column>
@@ -949,6 +951,8 @@
         </table-calc>
       </column-instance>
       <column-instance column='[adoption_time]' derivation='Median' name='[med:adoption_time:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_6893603714571317248]' derivation='None' name='[none:Calculation_6893603714571317248:nk]' pivot='key' type='nominal' />
+      <column-instance column='[breeds.primary]' derivation='None' name='[none:breeds.primary:nk]' pivot='key' type='nominal' />
       <column-instance column='[organization_id]' derivation='None' name='[none:organization_id:nk]' pivot='key' type='nominal' />
       <column-instance column='[species]' derivation='None' name='[none:species:nk]' pivot='key' type='nominal' />
       <column-instance column='[status]' derivation='None' name='[none:status:nk]' pivot='key' type='nominal' />
@@ -971,6 +975,9 @@
       <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[pcrk:usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative'>
         <table-calc ordering-type='Rows' rank-options='Competition,Ascending' type='PctRank' />
       </column-instance>
+      <column-instance column='[id]' derivation='Count' name='[pcto:cnt:id:qk:2]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' type='PctTotal' />
+      </column-instance>
       <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[pcto:usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative'>
         <table-calc ordering-type='Rows' type='PctTotal' />
       </column-instance>
@@ -991,74 +998,6 @@
       <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
       <style>
         <style-rule element='mark'>
-          <encoding attr='color' field='[:Measure Names]' type='palette'>
-            <map to='#76b7b2'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl]&quot;</bucket>
-            </map>
-            <map to='#7eb09b'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]&quot;</bucket>
-            </map>
-            <map to='#7eb09b'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Adoption Rate (copy)_5755037433092595713:qk]&quot;</bucket>
-            </map>
-            <map to='#7eb09b'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[cum:usr:Calculation_752664146686111744:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[diff:usr:Calculation_752664146686111744:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[none:status:nk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcdf:usr:Calculation_752664146686111744:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk:10]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk:11]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk:8]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcto:usr:Calculation_752664146686111744:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[rank:usr:Calculation_752664146686111744:qk]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[win:usr:Calculation_752664146686111744:qk]&quot;</bucket>
-            </map>
-            <map to='#ecbeb4'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[cum:usr:Calculation_752664146703224835:qk:2]&quot;</bucket>
-            </map>
-            <map to='#ecbeb4'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[cum:usr:Calculation_752664146703224835:qk]&quot;</bucket>
-            </map>
-            <map to='#ecbeb4'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcto:usr:Calculation_752664146703224835:qk]&quot;</bucket>
-            </map>
-            <map to='#ecbeb4'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]&quot;</bucket>
-            </map>
-            <map to='#ecbeb4'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[cnt:id:qk]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[med:adoption_time:qk]&quot;</bucket>
-            </map>
-          </encoding>
           <encoding attr='color' field='[none:organization_id:nk]' type='palette'>
             <map to='#499894'>
               <bucket>&quot;SC574&quot;</bucket>
@@ -1812,6 +1751,969 @@
               <bucket>&quot;Guinea Pig&quot;</bucket>
             </map>
           </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#519e8a'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl]&quot;</bucket>
+            </map>
+            <map to='#7eb09b'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]&quot;</bucket>
+            </map>
+            <map to='#7eb09b'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Adoption Rate (copy)_5755037433092595713:qk]&quot;</bucket>
+            </map>
+            <map to='#7eb09b'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[cum:usr:Calculation_752664146686111744:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[diff:usr:Calculation_752664146686111744:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[none:status:nk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcdf:usr:Calculation_752664146686111744:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk:10]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk:11]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk:8]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcto:usr:Calculation_752664146686111744:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[rank:usr:Calculation_752664146686111744:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[win:usr:Calculation_752664146686111744:qk]&quot;</bucket>
+            </map>
+            <map to='#ecbeb4'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[cum:usr:Calculation_752664146703224835:qk:2]&quot;</bucket>
+            </map>
+            <map to='#ecbeb4'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[cum:usr:Calculation_752664146703224835:qk]&quot;</bucket>
+            </map>
+            <map to='#ecbeb4'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcto:usr:Calculation_752664146703224835:qk]&quot;</bucket>
+            </map>
+            <map to='#ecbeb4'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[cnt:id:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[med:adoption_time:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[pcto:cnt:id:qk:2]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Calculation_6893603714571317248:nk]' type='palette'>
+            <map to='#7eb09b'>
+              <bucket>&quot;Other&quot;</bucket>
+            </map>
+            <map to='#ecbeb4'>
+              <bucket>&quot;Dog &amp; Cat&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:breeds.primary:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;American Bobtail&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Basset Hound&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Border Terrier&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Caucasian Sheepdog / Caucasian Ovtcharka&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Devon Rex&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;English Shepherd&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Goat&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Irish Setter&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Maremma Sheepdog&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Norfolk Terrier&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Pixiebob&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Rex&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Shih Tzu&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Tibetan Mastiff&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;White German Shepherd&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Abyssinian&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Arabian&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Black Mouth Cur&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Calico&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Cockapoo&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Egyptian Mau&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Foxhound&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Havanese&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Leonberger&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Mule&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Papillon&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Pyrenean Shepherd&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Scottish Terrier&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Spanish Water Dog&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Unknown Mixed Breed&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Akbash&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Australian Shepherd&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Boa&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Cardigan Welsh Corgi&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Corgi&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;English Foxhound&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;German Shorthaired Pointer&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Hotot&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Maltese&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Netherland Dwarf&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Pembroke Welsh Corgi&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Rat&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Shepherd&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Standard Schnauzer&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Welsh Terrier&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;American Eskimo Dog&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Belgian Hare&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;British Shorthair&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Chartreux&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Dogo Argentino&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Exotic Shorthair&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Grade&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Jack Russell Terrier&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Miniature Bull Terrier&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Norwich Terrier&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Pomsky&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Rough Collie&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Siberian Husky&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Torbie&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Yellow Labrador Retriever&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;American Bulldog&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Beagle&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Boston Terrier&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Cavachon&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Dilute Calico&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;English Springer Spaniel&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Golden Retriever&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Irish Terrier&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Mastiff&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Norwegian Buhund&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Plott Hound&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Rhinelander&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Short-Haired&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Tibetan Spaniel&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Wire Fox Terrier&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Akita&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Australian Terrier&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Bolognese&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Carolina Dog&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Coton De Tulear&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;English Lop&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;German Wirehaired Pointer&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Hound&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Maltipoo&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;New Zealand&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Persian&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Rat Terrier&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Shetland Sheepdog / Sheltie&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Tabby&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;West Highland White Terrier / Westie&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Anatolian Shepherd&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Black And Tan Coonhound&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Burmese&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Chow Chow&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Dutch Shepherd&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Florida White&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Harrier&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Labrador Retriever&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Mountain Cur&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Oriental Tabby&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Pug&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Schnauzer&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Snowshoe&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Turkish Van&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Affenpinscher&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Aussiedoodle&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Bloodhound&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Californian&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Cocker Spaniel&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;English Bulldog&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;French Bulldog&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Hedgehog&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Lhasa Apso&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Munchkin&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Parson Russell Terrier&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Quarterhorse&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Setter&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Spitz&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Vietnamese Pot Bellied&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;American Staffordshire Terrier&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Bernese Mountain Dog&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Bullmastiff&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Chiweenie&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Domestic Short Hair&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Flat-Coated Retriever&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Greyhound&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Komondor&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Miniature Poodle&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Oriental Long Hair&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Pot Bellied&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Samoyed&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Smooth Collie&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Treeing Walker Coonhound&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Alaskan Malamute&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Balinese&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Bombay&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Catahoula Leopard Dog&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Dachshund&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;English Pointer&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Giant Schnauzer&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Husky&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Manchester Terrier&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Newfoundland Dog&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Pig&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Redbone Coonhound&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Shiba Inu&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Tennessee Walker&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Wheaten Terrier&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;American Foxhound&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Belgian Shepherd / Malinois&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Brittany Spaniel&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Chesapeake Bay Retriever&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Dogue De Bordeaux&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Extra-Toes Cat / Hemingway Polydactyl&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Great Dane&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Japanese Chin&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Miniature Dachshund&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Nova Scotia Duck Tolling Retriever&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Poodle&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Russian Blue&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Silky Terrier&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Tortoiseshell&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Yorkshire Terrier&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;American Sable&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Bengal&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Brussels Griffon&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Chihuahua&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Domestic Long Hair&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Feist&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Great Pyrenees&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Jindo&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Miniature Horse&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Ocicat&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Portuguese Podengo&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Saint Bernard&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Silver&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Toy Fox Terrier&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;American Wirehair&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Bichon Frise&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Bunny Rabbit&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Chocolate Labrador Retriever&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Dutch&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Flemish Giant&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Guinea Pig&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Labradoodle&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Miniature Schnauzer&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Oriental Short Hair&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Presa Canario&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Schipperke&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Smooth Fox Terrier&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Turkish Angora&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Applehead Siamese&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Black Labrador Retriever&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Cairn Terrier&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Cinnamon&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Dwarf&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Fox Terrier&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Havana&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Lancashire Heeler&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Mountain Dog&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Otterhound&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Puggle&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Schnoodle&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Spaniel&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Tuxedo&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;American Bully&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Bearded Collie&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Boxer&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Cavalier King Charles Spaniel&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Dilute Tortoiseshell&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Entlebucher&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Goldendoodle&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Irish Wolfhound&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Mini Lop&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Norwegian Elkhound&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Pointer&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Rhodesian Ridgeback&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Siamese&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Tibetan Terrier&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Wirehaired Dachshund&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;American&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Basenji&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Border Collie&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Cattle Dog&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Dalmatian&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;English Setter&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Glen Of Imaal Terrier&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Ibizan Hound&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Manx&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Nigerian Dwarf&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Pit Bull Terrier&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Retriever&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Shih Poo&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Terrier&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Whippet&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Afghan Hound&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Australian Cattle Dog / Blue Heeler&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Blue Lacy&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Canaan Dog&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Collie&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;English Cocker Spaniel&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;German Pinscher&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Himalayan&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Lionhead&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Neapolitan Mastiff&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Patterdale Terrier / Fell Terrier&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Ragamuffin&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Shar-Pei&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Staffordshire Bull Terrier&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Vizsla&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;American Shorthair&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Bernedoodle&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Bull Terrier&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Chinese Crested Dog&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Domestic Medium Hair&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Finnish Spitz&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Greater Swiss Mountain Dog&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Keeshond&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Miniature Pinscher&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Old English Sheepdog&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Portuguese Water Dog&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Saluki&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Silver Fox&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Toy Manchester Terrier&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;American Curl&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Bearded Dragon&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Boykin Spaniel&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Cavapoo&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Doberman Pinscher&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Eskimo Dog&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Gordon Setter&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Italian Greyhound&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Mini Rex&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Norwegian Forest Cat&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Pomeranian&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Rottweiler&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Siberian&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Tiger&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Wirehaired Terrier&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Airedale Terrier&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Australian Kelpie&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Bluetick Coonhound&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Cane Corso&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Coonhound&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;English Coonhound&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;German Shepherd Dog&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Holland Lop&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Maine Coon&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Nebelung&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Pekingese&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Ragdoll&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Sheepadoodle&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Standard Poodle&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Weimaraner&quot;</bucket>
+            </map>
+          </encoding>
         </style-rule>
       </style>
       <semantic-values>
@@ -1917,6 +2819,14 @@
             <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
             <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <manual-sort column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:age:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Baby&quot;</bucket>
+              <bucket>&quot;Young&quot;</bucket>
+              <bucket>&quot;Adult&quot;</bucket>
+              <bucket>&quot;Senior&quot;</bucket>
+            </dictionary>
+          </manual-sort>
           <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]'>
             <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
               <groupfilter function='member' level='[none:species:nk]' member='&quot;Cat&quot;' />
@@ -1946,8 +2856,8 @@
             <format attr='font-weight' value='normal' />
           </style-rule>
           <style-rule element='header'>
-            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]' value='48' />
-            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:size:nk]' value='72' />
+            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]' value='64' />
+            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:size:nk]' value='104' />
           </style-rule>
           <style-rule element='field-labels'>
             <format attr='font-weight' value='bold' />
@@ -1995,17 +2905,13 @@
             <format attr='font-weight' value='bold' />
           </style-rule>
           <style-rule element='table-div'>
-            <format attr='stroke-size' scope='rows' value='1' />
             <format attr='line-visibility' scope='rows' value='on' />
             <format attr='line-pattern-only' scope='rows' value='solid' />
-            <format attr='stroke-color' scope='rows' value='#e6e6e6' />
+            <format attr='stroke-size' scope='rows' value='2' />
+            <format attr='stroke-color' scope='rows' value='#000000' />
           </style-rule>
           <style-rule element='legend-title-text'>
-            <format attr='color' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='Rate'>
-              <formatted-text>
-                <run>Rate</run>
-              </formatted-text>
-            </format>
+            <format attr='color' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='Rate' />
           </style-rule>
         </style>
         <panes>
@@ -2048,11 +2954,221 @@
       </table>
       <simple-id uuid='{14B73B7B-10F6-4648-880D-A5B41F606127}' />
     </worksheet>
+    <worksheet name='Adoption Rate by Age Group'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontsize='12'>Adoption Rate by Age Group</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
+            </column>
+            <column caption='Age' datatype='string' name='[age]' role='dimension' type='nominal' />
+            <column caption='Gender' datatype='string' name='[gender]' role='dimension' type='nominal' />
+            <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[age]' derivation='None' name='[none:age:nk]' pivot='key' type='nominal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:nk]' pivot='key' type='nominal' />
+            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:gender:nk]' />
+              <groupfilter function='member' level='[none:gender:nk]' member='&quot;Unknown&quot;' />
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:age:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:age:nk]' value='28' />
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='font-weight' value='normal' />
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='font-weight' value='bold' />
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='font-weight' value='normal' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-color' value='#7eb09b' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minheight' value='503' />
+                <format attr='maxheight' value='503' />
+                <format attr='minwidth' value='277' />
+                <format attr='maxwidth' value='277' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]</rows>
+        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:age:nk]</cols>
+      </table>
+      <simple-id uuid='{930DF1EE-6F04-4C7B-9623-3BD69BB9D9CD}' />
+    </worksheet>
+    <worksheet name='Adoption Rate by Gender'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontsize='12'>Adoption Rate by Gender</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
+            </column>
+            <column caption='Gender' datatype='string' name='[gender]' role='dimension' type='nominal' />
+            <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[gender]' derivation='None' name='[none:gender:nk]' pivot='key' type='nominal' />
+            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:gender:nk]' />
+              <groupfilter function='member' level='[none:gender:nk]' member='&quot;Unknown&quot;' />
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='font-weight' value='normal' />
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-color' value='#ecbeb4' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minheight' value='503' />
+                <format attr='maxheight' value='503' />
+                <format attr='minwidth' value='277' />
+                <format attr='maxwidth' value='277' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]</rows>
+        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]</cols>
+      </table>
+      <simple-id uuid='{1FAC0DDF-0008-4737-BDE5-5E85DE68BA20}' />
+    </worksheet>
     <worksheet name='Adoption Time by Age Group'>
       <layout-options>
         <title>
           <formatted-text>
-            <run bold='true' fontalignment='1'>Average Adoption Time by Age Group</run>
+            <run bold='true' fontalignment='1' fontsize='12'>Average Adoption Time by Age Group</run>
           </formatted-text>
         </title>
       </layout-options>
@@ -2075,6 +3191,9 @@
               <groupfilter function='member' level='[none:gender:nk]' member='&quot;Unknown&quot;' />
             </groupfilter>
           </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:age:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' shelf='columns' />
+          </shelf-sorts>
           <slices>
             <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]</column>
           </slices>
@@ -2082,11 +3201,37 @@
         </view>
         <style>
           <style-rule element='axis'>
-            <format attr='height' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:age:nk]' value='10' />
+            <format attr='height' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:age:nk]' value='28' />
             <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' scope='rows' value='false' />
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='font-weight' value='normal' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='font-weight' value='bold' />
           </style-rule>
           <style-rule element='worksheet'>
             <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='font-weight' value='normal' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
           </style-rule>
         </style>
         <panes>
@@ -2108,6 +3253,10 @@
                 <format attr='maxwidth' value='277' />
                 <format attr='aspect' value='0' />
               </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
+              </style-rule>
             </style>
           </pane>
         </panes>
@@ -2120,7 +3269,7 @@
       <layout-options>
         <title>
           <formatted-text>
-            <run bold='true' fontalignment='1'>Average Adoption Time by Gender</run>
+            <run bold='true' fontalignment='1' fontsize='12'>Average Adoption Time by Gender</run>
           </formatted-text>
         </title>
       </layout-options>
@@ -2141,6 +3290,9 @@
               <groupfilter function='member' level='[none:gender:nk]' member='&quot;Unknown&quot;' />
             </groupfilter>
           </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' shelf='columns' />
+          </shelf-sorts>
           <slices>
             <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]</column>
           </slices>
@@ -2149,9 +3301,32 @@
         <style>
           <style-rule element='axis'>
             <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' scope='rows' value='false' />
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+            <format attr='tick-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='font-weight' value='normal' />
           </style-rule>
           <style-rule element='worksheet'>
             <format attr='display-field-labels' scope='cols' value='false' />
+            <format attr='font-weight' value='bold' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
           </style-rule>
         </style>
         <panes>
@@ -2172,6 +3347,10 @@
                 <format attr='minwidth' value='277' />
                 <format attr='maxwidth' value='277' />
                 <format attr='aspect' value='0' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='stroke-size' value='0' />
+                <format attr='line-visibility' value='off' />
               </style-rule>
             </style>
           </pane>
@@ -2503,149 +3682,6 @@
       </table>
       <simple-id uuid='{72891024-E888-4BA2-AF96-9B96C0A20E1A}' />
     </worksheet>
-    <worksheet name='Breed Popularity'>
-      <layout-options>
-        <title>
-          <formatted-text>
-            <run fontname='Tableau Light'>Breed Popularity</run>
-          </formatted-text>
-        </title>
-      </layout-options>
-      <table>
-        <view>
-          <datasources>
-            <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
-          </datasources>
-          <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
-            <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
-            </column>
-            <column caption='Adopted' datatype='integer' name='[Calculation_752664146699726849]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END)' />
-            </column>
-            <column caption='Listed' datatype='integer' name='[Calculation_752664146703224835]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 1 END)' />
-            </column>
-            <column caption='Primary Breed' datatype='string' name='[breeds.primary]' role='dimension' type='nominal' />
-            <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
-            <column-instance column='[breeds.primary]' derivation='None' name='[none:breeds.primary:nk]' pivot='key' type='nominal' />
-            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
-            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_752664146699726849]' derivation='User' name='[usr:Calculation_752664146699726849:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_752664146703224835]' derivation='User' name='[usr:Calculation_752664146703224835:qk]' pivot='key' type='quantitative' />
-          </datasource-dependencies>
-          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]'>
-            <groupfilter function='union' user:op='manual'>
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]&quot;' />
-            </groupfilter>
-          </filter>
-          <manual-sort column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' direction='ASC'>
-            <dictionary>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]&quot;</bucket>
-              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]&quot;</bucket>
-            </dictionary>
-          </manual-sort>
-          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]'>
-            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
-              <groupfilter direction='DESC' expression='COUNT([breeds.primary])' function='order' user:ui-marker='order'>
-                <groupfilter function='level-members' level='[none:breeds.primary:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
-              </groupfilter>
-            </groupfilter>
-          </filter>
-          <shelf-sorts>
-            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]' shelf='rows' />
-          </shelf-sorts>
-          <slices>
-            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]</column>
-            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]</column>
-          </slices>
-          <aggregation value='true' />
-        </view>
-        <style>
-          <style-rule element='axis'>
-            <format attr='title' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values]' scope='cols' value='' />
-            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values]' scope='cols' value='false' />
-          </style-rule>
-          <style-rule element='cell'>
-            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
-            <format attr='font-family' data-class='subtotal' scope='rows' value='Roboto' />
-            <format attr='font-size' data-class='subtotal' scope='rows' value='8' />
-            <format attr='font-family' data-class='subtotal' scope='cols' value='Roboto' />
-            <format attr='font-size' data-class='subtotal' scope='cols' value='8' />
-            <format attr='color' value='#000000' />
-          </style-rule>
-          <style-rule element='header'>
-            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='136' />
-            <format attr='border-width' data-class='total' scope='rows' value='0' />
-            <format attr='border-style' data-class='total' scope='rows' value='none' />
-          </style-rule>
-          <style-rule element='field-labels-decoration'>
-            <format attr='font-family' value='Roboto' />
-            <format attr='color' value='#000000' />
-            <format attr='font-weight' value='normal' />
-            <format attr='font-size' value='10' />
-          </style-rule>
-          <style-rule element='label'>
-            <format attr='font-family' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='Roboto' />
-            <format attr='font-size' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='8' />
-            <format attr='text-align' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='left' />
-            <format attr='vertical-align' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='center' />
-            <format attr='font-family' scope='rows' value='Roboto light' />
-          </style-rule>
-          <style-rule element='mark'>
-            <encoding attr='size-bar' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
-          </style-rule>
-          <style-rule element='pane'>
-            <format attr='border-width' data-class='total' scope='rows' value='0' />
-            <format attr='border-style' data-class='total' scope='rows' value='none' />
-          </style-rule>
-          <style-rule element='worksheet'>
-            <format attr='font-size' value='8' />
-            <format attr='font-family' value='Roboto ' />
-            <format attr='display-field-labels' scope='rows' value='false' />
-          </style-rule>
-          <style-rule element='table-div'>
-            <format attr='line-pattern-only' scope='rows' value='solid' />
-            <format attr='stroke-color' scope='rows' value='#000000' />
-            <format attr='stroke-size' scope='rows' value='0' />
-            <format attr='line-visibility' scope='rows' value='off' />
-          </style-rule>
-          <style-rule element='title'>
-            <format attr='font-family' value='roboto' />
-          </style-rule>
-          <style-rule element='tooltip'>
-            <format attr='font-family' value='Roboto' />
-          </style-rule>
-        </style>
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-            <encodings>
-              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' />
-            </encodings>
-            <style>
-              <style-rule element='datalabel'>
-                <format attr='color-mode' value='auto' />
-                <format attr='font-family' value='Roboto' />
-                <format attr='font-size' value='7' />
-              </style-rule>
-              <style-rule element='mark'>
-                <format attr='mark-labels-show' value='true' />
-                <format attr='mark-labels-cull' value='true' />
-              </style-rule>
-            </style>
-          </pane>
-        </panes>
-        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]</rows>
-        <cols>([federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names] * [federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values])</cols>
-      </table>
-      <simple-id uuid='{3A05D397-CF97-4195-87B5-68D55CDFEAA0}' />
-    </worksheet>
     <worksheet name='Breeds by Region'>
       <layout-options>
         <title>
@@ -2773,6 +3809,196 @@
       </table>
       <simple-id uuid='{A92623A8-2BC1-4621-91D8-B01F7D9A6084}' />
     </worksheet>
+    <worksheet name='Cat Popularity'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontname='Tableau Light'>Cat Popularity</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
+            </column>
+            <column caption='Adopted' datatype='integer' name='[Calculation_752664146699726849]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END)' />
+            </column>
+            <column caption='Listed' datatype='integer' name='[Calculation_752664146703224835]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 1 END)' />
+            </column>
+            <column caption='Primary Breed' datatype='string' name='[breeds.primary]' role='dimension' type='nominal' />
+            <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[breeds.primary]' derivation='None' name='[none:breeds.primary:nk]' pivot='key' type='nominal' />
+            <column-instance column='[species]' derivation='None' name='[none:species:nk]' pivot='key' type='nominal' />
+            <column caption='Species' datatype='string' name='[species]' role='dimension' type='nominal' />
+            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_752664146699726849]' derivation='User' name='[usr:Calculation_752664146699726849:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_752664146703224835]' derivation='User' name='[usr:Calculation_752664146703224835:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;American Shorthair&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Calico&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Domestic Long Hair&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Domestic Medium Hair&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Domestic Short Hair&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Maine Coon&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Russian Blue&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Siamese&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Tabby&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Tortoiseshell&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]'>
+            <groupfilter function='member' level='[none:species:nk]' member='&quot;Cat&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]</column>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]</column>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values]' scope='cols' value='' />
+            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values]' scope='cols' value='false' />
+            <format attr='tick-color' scope='cols' value='#00000000' />
+            <format attr='line-pattern-only' scope='cols' value='solid' />
+            <format attr='stroke-color' scope='cols' value='#f9a655' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='tick-color' scope='rows' value='#00000000' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
+            <format attr='font-family' data-class='subtotal' scope='rows' value='Roboto' />
+            <format attr='font-size' data-class='subtotal' scope='rows' value='8' />
+            <format attr='font-family' data-class='subtotal' scope='cols' value='Roboto' />
+            <format attr='font-size' data-class='subtotal' scope='cols' value='8' />
+            <format attr='color' value='#000000' />
+            <format attr='font-family' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='Tableau Light' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='180' />
+            <format attr='border-width' data-class='total' scope='rows' value='0' />
+            <format attr='border-style' data-class='total' scope='rows' value='none' />
+          </style-rule>
+          <style-rule element='field-labels-decoration'>
+            <format attr='font-family' value='Roboto' />
+            <format attr='color' value='#000000' />
+            <format attr='font-weight' value='normal' />
+            <format attr='font-size' value='10' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='font-size' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='8' />
+            <format attr='text-align' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='left' />
+            <format attr='vertical-align' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='center' />
+            <format attr='font-family' scope='rows' value='Roboto light' />
+            <format attr='font-family' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='Tableau Light' />
+            <format attr='font-weight' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='bold' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' scope='rows' value='0' />
+            <format attr='border-style' data-class='total' scope='rows' value='none' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+            <format attr='font-size' value='8' />
+            <format attr='font-family' value='Roboto ' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='stroke-size' scope='rows' value='0' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-color' scope='rows' value='#000000' />
+            <format attr='line-pattern-only' scope='rows' value='solid' />
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='header-div'>
+            <format attr='line-pattern-only' scope='rows' value='solid' />
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='font-family' value='roboto' />
+          </style-rule>
+          <style-rule element='tooltip'>
+            <format attr='font-family' value='Roboto' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='datalabel'>
+                <format attr='color-mode' value='auto' />
+                <format attr='font-family' value='Roboto' />
+                <format attr='font-size' value='7' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]</rows>
+        <cols>([federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names] * [federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values])</cols>
+      </table>
+      <simple-id uuid='{3A05D397-CF97-4195-87B5-68D55CDFEAA0}' />
+    </worksheet>
     <worksheet name='Distribution'>
       <table>
         <view>
@@ -2866,6 +4092,176 @@
         </show-full-range>
       </table>
       <simple-id uuid='{C83C9D10-71E8-49B6-9427-6405388B40C1}' />
+    </worksheet>
+    <worksheet name='Dog Popularity'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontname='Tableau Light'>Breed Popularity</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
+            </column>
+            <column caption='Adopted' datatype='integer' name='[Calculation_752664146699726849]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END)' />
+            </column>
+            <column caption='Listed' datatype='integer' name='[Calculation_752664146703224835]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 1 END)' />
+            </column>
+            <column caption='Primary Breed' datatype='string' name='[breeds.primary]' role='dimension' type='nominal' />
+            <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[breeds.primary]' derivation='None' name='[none:breeds.primary:nk]' pivot='key' type='nominal' />
+            <column-instance column='[species]' derivation='None' name='[none:species:nk]' pivot='key' type='nominal' />
+            <column caption='Species' datatype='string' name='[species]' role='dimension' type='nominal' />
+            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_752664146699726849]' derivation='User' name='[usr:Calculation_752664146699726849:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_752664146703224835]' derivation='User' name='[usr:Calculation_752664146703224835:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Australian Shepherd&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Beagle&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Chihuahua&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;German Shepherd Dog&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Hound&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Labrador Retriever&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Pit Bull Terrier&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Shepherd&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Terrier&quot;' />
+              <groupfilter function='member' level='[none:breeds.primary:nk]' member='&quot;Unknown Mixed Breed&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]'>
+            <groupfilter function='member' level='[none:species:nk]' member='&quot;Dog&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146703224835:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]</column>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]</column>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values]' scope='cols' value='' />
+            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
+            <format attr='font-size' data-class='subtotal' scope='rows' value='8' />
+            <format attr='font-family' data-class='subtotal' scope='cols' value='Roboto' />
+            <format attr='font-size' data-class='subtotal' scope='cols' value='8' />
+            <format attr='color' value='#000000' />
+            <format attr='font-weight' value='normal' />
+            <format attr='font-family' data-class='subtotal' scope='rows' value='Tableau Light' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='180' />
+            <format attr='border-width' data-class='total' scope='rows' value='0' />
+            <format attr='border-style' data-class='total' scope='rows' value='none' />
+            <format attr='font-weight' data-class='subtotal' scope='rows' value='normal' />
+            <format attr='border-width' data-class='total' scope='cols' value='0' />
+            <format attr='border-style' data-class='total' scope='cols' value='none' />
+          </style-rule>
+          <style-rule element='field-labels-decoration'>
+            <format attr='font-family' value='Roboto' />
+            <format attr='color' value='#000000' />
+            <format attr='font-weight' value='normal' />
+            <format attr='font-size' value='10' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='font-family' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='Roboto' />
+            <format attr='font-size' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='8' />
+            <format attr='text-align' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='left' />
+            <format attr='vertical-align' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]' value='center' />
+            <format attr='font-family' scope='rows' value='Tableau Light' />
+            <format attr='font-weight' value='normal' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' scope='rows' value='0' />
+            <format attr='border-style' data-class='total' scope='rows' value='none' />
+            <format attr='border-width' data-class='total' scope='cols' value='0' />
+            <format attr='border-style' data-class='total' scope='cols' value='none' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+            <format attr='font-size' value='8' />
+            <format attr='font-weight' value='normal' />
+            <format attr='font-family' value='Tableau Light' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='line-pattern-only' scope='rows' value='solid' />
+            <format attr='stroke-color' scope='rows' value='#000000' />
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='2' />
+            <format attr='stroke-color' scope='cols' value='#000000' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='font-family' value='roboto' />
+          </style-rule>
+          <style-rule element='tooltip'>
+            <format attr='font-family' value='Roboto' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='datalabel'>
+                <format attr='color-mode' value='auto' />
+                <format attr='font-family' value='Roboto' />
+                <format attr='font-size' value='7' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:breeds.primary:nk]</rows>
+        <cols>([federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names] * [federated.0qyzubu0fk0525119s44t1kk3efl].[Multiple Values])</cols>
+      </table>
+      <simple-id uuid='{115CD070-E0CD-4AF2-A665-9697FF871169}' />
     </worksheet>
     <worksheet name='Listed vs Adopted by Day'>
       <table>
@@ -3222,14 +4618,15 @@
             <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
           </datasources>
           <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Dogs &amp; Cats' datatype='string' name='[Calculation_6893603714571317248]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [species] = &apos;Dog&apos; OR [species] = &apos;Cat&apos; THEN &apos;Dog &amp; Cat&apos; ELSE &apos;Other&apos; END' />
+            </column>
             <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
             </column>
             <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_6893603714571317248]' derivation='None' name='[none:Calculation_6893603714571317248:nk]' pivot='key' type='nominal' />
             <column-instance column='[species]' derivation='None' name='[none:species:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[pcrk:usr:Calculation_752664146686111744:qk:8]' pivot='key' type='quantitative'>
-              <table-calc ordering-type='Columns' rank-options='Competition,Ascending' type='PctRank' />
-            </column-instance>
             <column caption='Species' datatype='string' name='[species]' role='dimension' type='nominal' />
             <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
             <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
@@ -3244,10 +4641,11 @@
             <format attr='stroke-size' scope='cols' value='0' />
             <format attr='line-visibility' scope='cols' value='off' />
             <format attr='tick-color' scope='cols' value='#00000000' />
-            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk:8]' scope='cols' value='false' />
+            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' scope='cols' value='false' />
           </style-rule>
           <style-rule element='cell'>
             <format attr='text-align' value='auto' />
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
           </style-rule>
           <style-rule element='header'>
             <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]' value='72' />
@@ -3310,7 +4708,7 @@
             <mark class='Bar' />
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
             <encodings>
-              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' />
+              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_6893603714571317248:nk]' />
             </encodings>
             <style>
               <style-rule element='datalabel'>
@@ -3321,8 +4719,8 @@
               <style-rule element='mark'>
                 <format attr='size' value='1.5602209568023682' />
                 <format attr='mark-labels-cull' value='false' />
-                <format attr='mark-color' value='#ecbeb4' />
                 <format attr='mark-labels-show' value='true' />
+                <format attr='mark-color' value='#ecbeb4' />
               </style-rule>
               <style-rule element='pane'>
                 <format attr='minwidth' value='485' />
@@ -3337,9 +4735,101 @@
           </pane>
         </panes>
         <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]</rows>
-        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[pcrk:usr:Calculation_752664146686111744:qk:8]</cols>
+        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]</cols>
       </table>
       <simple-id uuid='{41E799C8-1A2E-49EB-8E8B-721C249F8D5E}' />
+    </worksheet>
+    <worksheet name='Region'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
+            </column>
+            <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[organization_id]' derivation='None' name='[none:organization_id:nk]' pivot='key' type='nominal' />
+            <column-instance column='[region]' derivation='None' name='[none:region:nk]' pivot='key' type='nominal' />
+            <column caption='Organization Id' datatype='string' name='[organization_id]' role='dimension' type='nominal' />
+            <column caption='Region' datatype='string' name='[region]' role='dimension' type='nominal' />
+            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:organization_id:nk]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:organization_id:nk]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[none:organization_id:nk]' member='&quot;TN290&quot;' />
+                <groupfilter function='member' level='[none:organization_id:nk]' member='&quot;TN90&quot;' />
+                <groupfilter function='member' level='[none:organization_id:nk]' member='&quot;TN916&quot;' />
+                <groupfilter function='member' level='[none:organization_id:nk]' member='%null%' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:organization_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:region:nk]</rows>
+        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]</cols>
+      </table>
+      <simple-id uuid='{F5045DE3-B219-454F-87D9-83B3675BCE78}' />
+    </worksheet>
+    <worksheet name='Region w/o'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
+            </column>
+            <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[region]' derivation='None' name='[none:region:nk]' pivot='key' type='nominal' />
+            <column caption='Region' datatype='string' name='[region]' role='dimension' type='nominal' />
+            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:region:nk]</rows>
+        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]</cols>
+      </table>
+      <simple-id uuid='{3F1693C7-134B-4CE6-8CC2-6DB16ECFC0D1}' />
     </worksheet>
     <worksheet name='Season Bar'>
       <layout-options>
@@ -3371,9 +4861,14 @@
             <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_752664146699726849]' derivation='User' name='[usr:Calculation_752664146699726849:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
-          <shelf-sorts>
-            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_752664146781290503:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]' shelf='columns' />
-          </shelf-sorts>
+          <manual-sort column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_752664146781290503:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Winter&quot;</bucket>
+              <bucket>&quot;Spring&quot;</bucket>
+              <bucket>&quot;Summer&quot;</bucket>
+              <bucket>&quot;Fall&quot;</bucket>
+            </dictionary>
+          </manual-sort>
           <aggregation value='true' />
         </view>
         <style>
@@ -3451,6 +4946,137 @@
       </table>
       <simple-id uuid='{5A6F612E-64F0-477E-9EE9-FD155E15E250}' />
     </worksheet>
+    <worksheet name='Season Bar w/o'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Total Adoptions &amp; Rate by Season</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Adoption Rate' datatype='real' name='[Calculation_752664146686111744]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END) / COUNT([id])' />
+            </column>
+            <column caption='Adopted' datatype='integer' name='[Calculation_752664146699726849]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF [status] = &apos;adopted&apos; THEN 1 ELSE 0 END)' />
+            </column>
+            <column caption='Season' datatype='string' name='[Calculation_752664146781290503]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF MONTH([published_date]) &gt;= 3 AND MONTH([published_date]) &lt;= 5 THEN &apos;Spring&apos;&#13;&#10;ELSEIF MONTH([published_date]) &gt;= 6 AND MONTH([published_date]) &lt;= 8 THEN &apos;Summer&apos;&#13;&#10;ELSEIF MONTH([published_date]) &gt;= 9 AND MONTH([published_date]) &lt;= 11 THEN &apos;Fall&apos;&#13;&#10;ELSE &apos;Winter&apos;&#13;&#10;END' />
+            </column>
+            <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_752664146781290503]' derivation='None' name='[none:Calculation_752664146781290503:nk]' pivot='key' type='nominal' />
+            <column-instance column='[organization_id]' derivation='None' name='[none:organization_id:nk]' pivot='key' type='nominal' />
+            <column caption='Organization Id' datatype='string' name='[organization_id]' role='dimension' type='nominal' />
+            <column caption='Published Date' datatype='date' name='[published_date]' role='dimension' type='ordinal' />
+            <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_752664146686111744]' derivation='User' name='[usr:Calculation_752664146686111744:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_752664146699726849]' derivation='User' name='[usr:Calculation_752664146699726849:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <manual-sort column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_752664146781290503:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Winter&quot;</bucket>
+              <bucket>&quot;Spring&quot;</bucket>
+              <bucket>&quot;Summer&quot;</bucket>
+              <bucket>&quot;Fall&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:organization_id:nk]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:organization_id:nk]' />
+              <groupfilter function='union'>
+                <groupfilter function='member' level='[none:organization_id:nk]' member='&quot;TN290&quot;' />
+                <groupfilter function='member' level='[none:organization_id:nk]' member='&quot;TN90&quot;' />
+                <groupfilter function='member' level='[none:organization_id:nk]' member='&quot;TN916&quot;' />
+                <groupfilter function='member' level='[none:organization_id:nk]' member='%null%' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:organization_id:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_752664146781290503:nk]' value='95' />
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' value='p0.00%' />
+            <format attr='font-size' value='8' />
+            <format attr='font-weight' value='normal' />
+            <format attr='font-weight' data-class='subtotal' scope='rows' value='normal' />
+            <format attr='font-weight' data-class='total' scope='rows' value='normal' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='font-weight' scope='rows' value='normal' />
+            <format attr='color' scope='cols' value='#000000' />
+            <format attr='font-weight' scope='cols' value='bold' />
+            <format attr='font-size' scope='cols' value='9' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-diverging'>
+                <color>#ecbeb4</color>
+                <color>#e8c3ba</color>
+                <color>#e5c7c1</color>
+                <color>#e2ccc7</color>
+                <color>#dfd0cd</color>
+                <color>#dcd5d3</color>
+                <color>#d9d9d9</color>
+                <color>#becfca</color>
+                <color>#a5c5bd</color>
+                <color>#8dbbaf</color>
+                <color>#77b1a2</color>
+                <color>#63a796</color>
+                <color>#519e8a</color>
+              </color-palette>
+            </encoding>
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='font-weight' value='normal' />
+          </style-rule>
+          <style-rule element='tooltip'>
+            <format attr='font-size' value='8' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='1.8350828886032104' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146699726849:qk]</rows>
+        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_752664146781290503:nk]</cols>
+      </table>
+      <simple-id uuid='{1E7787BA-5B6A-45FE-B231-B1CA23650136}' />
+    </worksheet>
     <worksheet name='Season Line'>
       <table>
         <view>
@@ -3517,6 +5143,14 @@
             <column caption='Species' datatype='string' name='[species]' role='dimension' type='nominal' />
             <column caption='Status' datatype='string' name='[status]' role='dimension' type='nominal' />
           </datasource-dependencies>
+          <manual-sort column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:age:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Baby&quot;</bucket>
+              <bucket>&quot;Young&quot;</bucket>
+              <bucket>&quot;Adult&quot;</bucket>
+              <bucket>&quot;Senior&quot;</bucket>
+            </dictionary>
+          </manual-sort>
           <filter class='categorical' column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]'>
             <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
               <groupfilter function='member' level='[none:species:nk]' member='&quot;Cat&quot;' />
@@ -3546,11 +5180,11 @@
             <format attr='text-align' value='center' />
             <format attr='vertical-align' value='center' />
             <format attr='text-align' data-class='subtotal' value='center' />
-            <format attr='font-weight' value='normal' />
+            <format attr='font-weight' value='bold' />
           </style-rule>
           <style-rule element='header'>
-            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]' value='48' />
-            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:size:nk]' value='72' />
+            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:gender:nk]' value='80' />
+            <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:size:nk]' value='108' />
             <format attr='height-header' value='17' />
             <format attr='border-width' data-class='total' scope='rows' value='0' />
             <format attr='border-style' data-class='total' scope='rows' value='none' />
@@ -3601,15 +5235,18 @@
             <format attr='font-weight' value='bold' />
           </style-rule>
           <style-rule element='table-div'>
-            <format attr='stroke-size' scope='rows' value='1' />
             <format attr='line-visibility' scope='rows' value='on' />
             <format attr='line-pattern-only' scope='rows' value='solid' />
-            <format attr='stroke-color' scope='rows' value='#e6e6e6' />
+            <format attr='stroke-size' scope='rows' value='2' />
+            <format attr='stroke-color' scope='rows' value='#000000' />
+          </style-rule>
+          <style-rule element='title'>
+            <format attr='font-weight' value='normal' />
           </style-rule>
           <style-rule element='legend-title-text'>
-            <format attr='color' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' value='Speed'>
+            <format attr='color' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' value='Days'>
               <formatted-text>
-                <run>Speed</run>
+                <run>Days</run>
               </formatted-text>
             </format>
           </style-rule>
@@ -3654,7 +5291,7 @@
       </table>
       <simple-id uuid='{6E98A7B1-C16D-4D23-8396-65D99C4F9813}' />
     </worksheet>
-    <worksheet name='Speed by Species'>
+    <worksheet name='Time by Species'>
       <layout-options>
         <title>
           <formatted-text>
@@ -3668,8 +5305,12 @@
             <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
           </datasources>
           <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Dogs &amp; Cats' datatype='string' name='[Calculation_6893603714571317248]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [species] = &apos;Dog&apos; OR [species] = &apos;Cat&apos; THEN &apos;Dog &amp; Cat&apos; ELSE &apos;Other&apos; END' />
+            </column>
             <column caption='Adoption Time' datatype='real' name='[adoption_time]' role='measure' type='quantitative' />
             <column-instance column='[adoption_time]' derivation='Avg' name='[avg:adoption_time:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_6893603714571317248]' derivation='None' name='[none:Calculation_6893603714571317248:nk]' pivot='key' type='nominal' />
             <column-instance column='[species]' derivation='None' name='[none:species:nk]' pivot='key' type='nominal' />
             <column-instance column='[status]' derivation='None' name='[none:status:nk]' pivot='key' type='nominal' />
             <column caption='Species' datatype='string' name='[species]' role='dimension' type='nominal' />
@@ -3696,6 +5337,7 @@
           </style-rule>
           <style-rule element='cell'>
             <format attr='text-align' value='auto' />
+            <format attr='text-format' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' value='n#,##0;-#,##0' />
           </style-rule>
           <style-rule element='header'>
             <format attr='width' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]' value='72' />
@@ -3745,9 +5387,6 @@
             <format attr='stroke-size' scope='cols' value='0' />
             <format attr='line-visibility' scope='cols' value='off' />
           </style-rule>
-          <style-rule element='legend-title-text'>
-            <format attr='color' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' value='Avg. Speed Scale' />
-          </style-rule>
           <style-rule element='tooltip'>
             <format attr='font-family' value='Tableau Light' />
             <format attr='font-size' value='8' />
@@ -3761,7 +5400,7 @@
             <mark class='Bar' />
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
             <encodings>
-              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' />
+              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_6893603714571317248:nk]' />
               <text column='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' />
             </encodings>
             <style>
@@ -3797,7 +5436,7 @@
       <layout-options>
         <title>
           <formatted-text>
-            <run bold='true' fontalignment='1'>Total Listings by Species</run>
+            <run fontalignment='1'>Total Listings by Species</run>
           </formatted-text>
         </title>
       </layout-options>
@@ -3807,63 +5446,68 @@
             <datasource caption='cleaned_pets' name='federated.0qyzubu0fk0525119s44t1kk3efl' />
           </datasources>
           <datasource-dependencies datasource='federated.0qyzubu0fk0525119s44t1kk3efl'>
+            <column caption='Dogs &amp; Cats' datatype='string' name='[Calculation_6893603714571317248]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [species] = &apos;Dog&apos; OR [species] = &apos;Cat&apos; THEN &apos;Dog &amp; Cat&apos; ELSE &apos;Other&apos; END' />
+            </column>
             <column-instance column='[id]' derivation='Count' name='[cnt:id:qk]' pivot='key' type='quantitative' />
             <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_6893603714571317248]' derivation='None' name='[none:Calculation_6893603714571317248:nk]' pivot='key' type='nominal' />
             <column-instance column='[species]' derivation='None' name='[none:species:nk]' pivot='key' type='nominal' />
+            <column-instance column='[id]' derivation='Count' name='[pcto:cnt:id:qk:2]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
             <column caption='Species' datatype='string' name='[species]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <shelf-sorts>
-            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[cnt:id:qk]' shelf='rows' />
+            <shelf-sort-v2 dimension-to-sort='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0qyzubu0fk0525119s44t1kk3efl].[cnt:id:qk]' shelf='columns' />
           </shelf-sorts>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='axis'>
-            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[cnt:id:qk]' scope='cols' value='false' />
+            <encoding attr='space' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[pcto:cnt:id:qk:2]' field-type='quantitative' scale='log' scope='rows' type='space' />
+            <format attr='display' class='0' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[pcto:cnt:id:qk:2]' scope='rows' value='false' />
           </style-rule>
-          <style-rule element='header'>
-            <format attr='height-header' value='10' />
+          <style-rule element='cell'>
+            <format attr='font-family' value='Tableau Light' />
+            <format attr='font-weight' value='normal' />
           </style-rule>
           <style-rule element='label'>
-            <format attr='text-align' value='left' />
-            <format attr='vertical-align' value='center' />
-            <format attr='font-weight' field='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]' value='bold' />
+            <format attr='font-size' value='8' />
+            <format attr='font-family' value='Tableau Light' />
+            <format attr='font-weight' value='bold' />
           </style-rule>
           <style-rule element='worksheet'>
             <format attr='display-field-labels' scope='rows' value='false' />
+            <format attr='display-field-labels' scope='cols' value='false' />
           </style-rule>
           <style-rule element='map'>
             <format attr='washout' value='0.0' />
           </style-rule>
         </style>
         <panes>
-          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_6893603714571317248:nk]' />
+            </encodings>
             <style>
               <style-rule element='datalabel'>
                 <format attr='color-mode' value='auto' />
-                <format attr='font-size' value='7' />
+                <format attr='font-size' value='8' />
               </style-rule>
               <style-rule element='mark'>
                 <format attr='mark-labels-show' value='true' />
                 <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-color' value='#7eb09b' />
-              </style-rule>
-              <style-rule element='pane'>
-                <format attr='minwidth' value='345' />
-                <format attr='maxwidth' value='345' />
-                <format attr='minheight' value='300' />
-                <format attr='maxheight' value='300' />
-                <format attr='aspect' value='0' />
               </style-rule>
             </style>
           </pane>
         </panes>
-        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]</rows>
-        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[cnt:id:qk]</cols>
+        <rows>[federated.0qyzubu0fk0525119s44t1kk3efl].[pcto:cnt:id:qk:2]</rows>
+        <cols>[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]</cols>
       </table>
       <simple-id uuid='{E2E1258C-3481-4541-AAB9-F1F2711D86EF}' />
     </worksheet>
@@ -3874,21 +5518,17 @@
       <size maxheight='600' maxwidth='1000' minheight='600' minwidth='1000' preset-index='3' sizing-mode='fixed' />
       <zones>
         <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='97334' id='1' name='Adoption Time by Gender' w='49200' x='800' y='1333'>
-            <zone-style>
-              <format attr='border-color' value='#000000' />
-              <format attr='border-style' value='none' />
-              <format attr='border-width' value='0' />
-              <format attr='margin' value='4' />
-            </zone-style>
-          </zone>
-          <zone h='97334' id='3' name='Adoption Time by Age Group' w='49200' x='50000' y='1333'>
-            <zone-style>
-              <format attr='border-color' value='#000000' />
-              <format attr='border-style' value='none' />
-              <format attr='border-width' value='0' />
-              <format attr='margin' value='4' />
-            </zone-style>
+          <zone h='97334' id='5' param='horz' type-v2='layout-flow' w='98400' x='800' y='1333'>
+            <zone h='97334' id='3' type-v2='layout-basic' w='98400' x='800' y='1333'>
+              <zone h='97334' id='1' name='Total by Species' show-title='false' w='98400' x='800' y='1333'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
           </zone>
           <zone-style>
             <format attr='border-color' value='#000000' />
@@ -3898,32 +5538,23 @@
           </zone-style>
         </zone>
       </zones>
-      <devicelayouts>
-        <devicelayout auto-generated='true' name='Phone'>
-          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
-          <zones />
-        </devicelayout>
-      </devicelayouts>
       <simple-id uuid='{60F000CD-9AC7-4C79-8FAF-8BA6889F1294}' />
     </dashboard>
   </dashboards>
-  <windows source-height='44'>
-    <window class='dashboard' maximized='true' name='Dashboard 1'>
+  <windows source-height='30'>
+    <window class='dashboard' name='Dashboard 1'>
       <viewpoints>
-        <viewpoint name='Adoption Time by Age Group'>
-          <zoom type='fit-width' />
-        </viewpoint>
-        <viewpoint name='Adoption Time by Gender'>
+        <viewpoint name='Total by Species'>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='3' />
+      <active id='1' />
       <simple-id uuid='{2DD53676-5EC6-42F5-93E8-B56270E33117}' />
     </window>
     <window class='worksheet' name='Total by Species'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='160'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -3936,8 +5567,13 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='22'>
+          <strip size='2147483647'>
             <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_6893603714571317248:nk]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -3949,7 +5585,7 @@
     <window class='worksheet' name='Adoptions by Month'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -3975,7 +5611,7 @@
     <window class='worksheet' name='Breeds by Region'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -3988,12 +5624,12 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='22'>
+          <strip size='33'>
             <card type='title' />
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
+          <strip size='159'>
             <card pane-specification-id='2' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:species:nk]' type='color' />
           </strip>
         </edge>
@@ -4006,7 +5642,7 @@
     <window class='worksheet' name='Adoptions by Day'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4032,7 +5668,7 @@
     <window class='worksheet' name='Listed vs Adopted by Day'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4055,7 +5691,7 @@
     <window class='worksheet' name='Listings by Org - August'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4074,7 +5710,7 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
+          <strip size='159'>
             <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' type='color' />
           </strip>
         </edge>
@@ -4087,7 +5723,7 @@
     <window class='worksheet' name='Adoption Time by Gender'>
       <cards>
         <edge name='left'>
-          <strip size='160'>
+          <strip size='240'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4100,7 +5736,7 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='30'>
+          <strip size='46'>
             <card type='title' />
           </strip>
         </edge>
@@ -4113,7 +5749,7 @@
     <window class='worksheet' name='Adoption Time by Age Group'>
       <cards>
         <edge name='left'>
-          <strip size='160'>
+          <strip size='240'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4126,7 +5762,7 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='30'>
+          <strip size='45'>
             <card type='title' />
           </strip>
         </edge>
@@ -4136,10 +5772,62 @@
       </viewpoint>
       <simple-id uuid='{0E1AAC9C-22E9-4806-9A9D-8E59254A0619}' />
     </window>
+    <window class='worksheet' name='Adoption Rate by Gender'>
+      <cards>
+        <edge name='left'>
+          <strip size='240'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='45'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-width' />
+      </viewpoint>
+      <simple-id uuid='{8C35D7A9-271D-40B6-86FC-A15A38B88CA1}' />
+    </window>
+    <window class='worksheet' name='Adoption Rate by Age Group'>
+      <cards>
+        <edge name='left'>
+          <strip size='240'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='45'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-width' />
+      </viewpoint>
+      <simple-id uuid='{4FD1C4CF-5E11-45EC-8EB8-BC7DF412A8F2}' />
+    </window>
     <window class='worksheet' name='Distribution'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4162,10 +5850,10 @@
       </viewpoint>
       <simple-id uuid='{F3817B73-A966-4B47-A66C-BAA21DF874CF}' />
     </window>
-    <window class='worksheet' name='Speed by Species'>
+    <window class='worksheet' name='Time by Species'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4180,8 +5868,8 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
-            <card pane-specification-id='2' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' type='color' />
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_6893603714571317248:nk]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -4190,7 +5878,7 @@
     <window class='worksheet' name='Rate by Species'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4205,8 +5893,8 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
-            <card pane-specification-id='2' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' type='color' />
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_6893603714571317248:nk]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -4215,7 +5903,7 @@
     <window class='worksheet' name='Speed Heatmap'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4230,7 +5918,7 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
+          <strip size='159'>
             <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[avg:adoption_time:qk]' type='color' />
           </strip>
         </edge>
@@ -4240,7 +5928,7 @@
     <window class='worksheet' name='Adoption Rate Heatmap'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4258,7 +5946,7 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
+          <strip size='159'>
             <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' type='color' />
           </strip>
         </edge>
@@ -4268,7 +5956,7 @@
     <window class='worksheet' name='Season Bar'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4281,22 +5969,22 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='20'>
+          <strip size='30'>
             <card type='title' />
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
+          <strip size='160'>
             <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' type='color' />
           </strip>
         </edge>
       </cards>
       <simple-id uuid='{496C676F-29A3-4555-85CA-5D1221CCF02C}' />
     </window>
-    <window class='worksheet' name='Season Line'>
+    <window class='worksheet' name='Season Bar w/o'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4309,22 +5997,50 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='20'>
+          <strip size='30'>
             <card type='title' />
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[usr:Calculation_752664146686111744:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3A9E7322-17B9-4BD0-B7D4-6E23F22CD36F}' />
+    </window>
+    <window class='worksheet' name='Season Line'>
+      <cards>
+        <edge name='left'>
+          <strip size='159'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='159'>
             <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[none:Calculation_752664146781290503:nk]' type='color' />
           </strip>
         </edge>
       </cards>
       <simple-id uuid='{3467676B-4ED7-4028-8096-597B0A38A6B6}' />
     </window>
-    <window class='worksheet' name='Adoptions by Region'>
+    <window class='worksheet' maximized='true' name='Adoptions by Region'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='159'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4343,7 +6059,7 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='100'>
+          <strip size='150'>
             <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' type='color' />
           </strip>
         </edge>
@@ -4353,10 +6069,10 @@
       </viewpoint>
       <simple-id uuid='{86A576C9-75BF-4CCD-9829-7727E96CAF12}' />
     </window>
-    <window class='worksheet' name='Breed Popularity'>
+    <window class='worksheet' name='Cat Popularity'>
       <cards>
         <edge name='left'>
-          <strip size='106'>
+          <strip size='268'>
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
@@ -4375,7 +6091,7 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='106'>
+          <strip size='159'>
             <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' type='color' />
           </strip>
         </edge>
@@ -4384,6 +6100,84 @@
         <default-map-tool-selection tool='2' />
       </viewpoint>
       <simple-id uuid='{C8796928-B432-44C3-A0B2-13892A75D0C6}' />
+    </window>
+    <window class='worksheet' name='Dog Popularity'>
+      <cards>
+        <edge name='left'>
+          <strip size='267'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='159'>
+            <card pane-specification-id='0' param='[federated.0qyzubu0fk0525119s44t1kk3efl].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{1BE2FE22-00BE-4DB8-A057-BBA761A25DD2}' />
+    </window>
+    <window class='worksheet' name='Region'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{035802D2-9847-4DF5-AE94-CC31D841F111}' />
+    </window>
+    <window class='worksheet' name='Region w/o'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A2AD032A-C76C-4BE8-9E7F-E27CD700F026}' />
     </window>
   </windows>
 </workbook>
