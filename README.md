@@ -22,12 +22,12 @@ The main data question that I wanted to answer was, "What are the key factors in
 In summary, this capstone project dives into the heart of pet adoption dynamics in Tennessee for the year 2023. I embarked on a data exploration journey using sources like the Petfinder API, simplemaps dataset, and Wikipedia. Along the way, I was able to uncover fascinating insights into what influences adoption rates and trends in Tennessee.  
 
 **Key Findings**
-- Over 32k pets were listed for adoption in 2023, with an adoption rate of 90.8%.
-- Dogs and cats dominated the listings, comprising 99% of the total listings.
-- Adoption trends varied throughout the year, with notable peaks in August.
-- Adoption speed varied across species, with shorter stays for more commonly listed animals like cats and dogs.
-- Breed popularity significantly influenced adoption rates.
-- Geographic patterns influenced adoption rates and average adoption time across different regions of Tennessee.
+- Over 32k pets were listed for adoption in 2023, with an adoption rate of 90.8%
+- Dogs and cats dominated the listings, comprising 99% of the total listings
+- Adoption trends varied throughout the year, with notable peaks in August
+- Adoption speed varied across species, with shorter stays for more commonly listed animals like cats and dogs
+- Breed popularity significantly influenced adoption rates
+- Geographic patterns influenced adoption rates and average adoption time across different regions of Tennessee
 
 ## Interactive Dashboard
 Explore the [2023 Tennessee Adoption Dynamics Dashboard](https://public.tableau.com/views/2023TennesseeAdoptionDynamicsDashboard/PetAdoptionDynamics?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link) for detailed insights into pet adoption dynamics, including adoption time and rate trends, with customizable filters. 
