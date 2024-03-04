@@ -5,7 +5,7 @@ This capstone project explores Tennessee's pet adoption landscape in 2023 using 
 
 ## Table of Contents
 - [Motivation](#motivation)
-- [Data Questions](#data-questions)
+- [Data Question](#data-question)
 - [Research & Key Findings](#research--key-findings)
 - [Interactive Dashboard](#interactive-dashboard)
 - [Known Issues & Challenges](#known-issues--challenges)
@@ -15,7 +15,7 @@ This capstone project explores Tennessee's pet adoption landscape in 2023 using 
 ## Motivation
 The motivation for this project is rooted in a combination of personal experience and professional curiosity. My experience adopting two beloved dogs has inspired me to explore and improve the pet adoption process. The joy of providing a home to animals in need drives my passion for this project.
 
-## Data Questions 
+## Data Question
 The main data question that I wanted to answer was, "What are the key factors influencing pet adoption dynamics in Tennessee?"
 
 ## Research & Key Findings
