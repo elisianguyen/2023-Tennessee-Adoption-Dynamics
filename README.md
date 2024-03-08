@@ -24,7 +24,7 @@ In summary, this capstone project dives into the heart of pet adoption dynamics 
 **Key Findings**
 - Over 32k pets were listed for adoption in 2023, with an adoption rate of 90.8%
 - Dogs and cats dominated the listings, comprising 99% of the total listings
-- Adoption trends varied throughout the year, with notable peaks in August
+- Adoption trends varied throughout the year, with notable peaks in August due to a massive updated
 - Adoption speed varied across species, with shorter stays for more commonly listed animals like cats and dogs
 - Breed popularity significantly influenced adoption rates
 - Geographic patterns influenced adoption rates and average adoption time across different regions of Tennessee
